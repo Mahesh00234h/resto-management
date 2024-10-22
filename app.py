@@ -15,10 +15,8 @@ menu = {
     "Salad": 79.99,
     "Grilled Chicken": 399.99,
     "Sushi Roll": 99.99,
-    
     "Tacos": 49.49,
     "Garlic Bread": 49.99,
-    
     "French Fries": 79.49,
     "Fish and Chips": 179.99,
     "Miso Soup": 129.99,
@@ -60,16 +58,14 @@ def menu_page():
 
 @app.route('/kitchen')
 def kitchen_page():
-    if not is_admin():
-        return redirect(url_for('menu_page'))  # Redirect non-admins
+    
     return render_template('kitchen.html', orders=orders)  # Pass orders to kitchen page
 
 @app.route('/admin')
 def admin_page():
-    if not is_admin():
-        return redirect(url_for('menu_page'))  # Redirect non-admins
+    # Redirect non-admins
     return render_template('admin.html', orders=orders)
-    
+
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
