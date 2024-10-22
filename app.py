@@ -80,7 +80,7 @@ def admin_login():
             session['role'] = 'admin'  # Set role to admin
             return redirect(url_for('admin_page'))  # Redirect to admin page after login
         else:
-            return redirect(url_for('401.html'))
+            return render_template('401.html')
     return render_template('admin_login.html')
 
 @socketio.on('select_item')
