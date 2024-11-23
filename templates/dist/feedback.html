@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Feedback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    form {border: 3px solid #db4747;}
+    
+    input[type=email], textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 30px;
+    }
+    
+    button {
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      opacity: 0.8;
+    }
+    
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
+    
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
+    
+    img.avatar {
+      width: 40%;
+      border-radius: 50%;
+    }
+    
+    .container {
+      padding: 16px;
+    }
+    
+   
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    
+    .star-rating input[type="radio"] {
+      display: none;
+    }
+    
+    .star-rating label {
+      font-size: 30px;
+      color: #7f7676;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star-rating input[type="radio"]:checked ~ label {
+      color: #f5b301;
+    }
+    
+    .star-rating input[type="radio"]:hover ~ label {
+      color: #f5b301;
+    }
+    
+    
+    @media screen and (max-width: 300px) {
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="id01" class="modal">
+    
+    <form class="modal-content animate" action="https://api.web3forms.com/submit" method="POST">
+      <div class="imgcontainer">
+        <img src="https://res.cloudinary.com/dxu2xavnq/image/upload/v1722142881/user_jfzvvq.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <input type="hidden" name="access_key" value="56f63d93-302a-45ff-b3fe-db5ac848669e">
+        
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+        
+        <label for="suggestion"><b>Suggestion</b></label>
+        <textarea name="suggestion" placeholder="Enter your suggestion" rows="4" required></textarea>
+
+        <label><b>Rate Us</b></label>
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5">
+          <label for="star5">&#9733;</label>
+          <input type="radio" id="star4" name="rating" value="4">
+          <label for="star4">&#9733;</label>
+          <input type="radio" id="star3" name="rating" value="3">
+          <label for="star3">&#9733;</label>
+          <input type="radio" id="star2" name="rating" value="2">
+          <label for="star2">&#9733;</label>
+          <input type="radio" id="star1" name="rating" value="1">
+          <label for="star1">&#9733;</label>
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

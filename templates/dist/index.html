@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Restaurant</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://res.cloudinary.com/dxu2xavnq/image/upload/v1728761805/space_upvdqi.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-in-out;
+            margin: 0 20px;
+            justify-content: center;
+        }
+
+        form {
+            margin: 20px 0;
+            text-align: center;
+            animation: slideIn 1.5s ease-in-out;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #007bff;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: none;
+        }
+        .btn2 {
+            padding: 10px 10px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 40px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        button[type="submit"] {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            form {
+                width: 90%;
+            }
+
+            button, input[type="text"] {
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button, input[type="text"] {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                margin-top: 30px;
+                font-size: 1.5rem;
+            }
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        footer strong {
+            color: #e74c3c;
+        }
+        img {
+            height: 40px;
+            width: 40px;
+            margin-top: 40px;
+        
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Restaurant</h1>
+    <form method="post">
+        <input type="text" name="username" placeholder="Enter your username" required>
+        <button type="submit" class="btn">Start Ordering</button>
+    </form>
+
+    <h2>Admin Access</h2>
+    <button class="btn2" onclick="window.location.href='/admin/login'">Admin Login</button>
+    <a href="/feedback"><img src="https://res.cloudinary.com/dxu2xavnq/image/upload/v1729792608/good-feedback_cqf8vt.png" alt="feedback"></a>
+
+    <footer>
+        &copy; 2024 <strong>R</strong>esto Management And <strong>SKYNET</strong>. All rights reserved.
+    </footer>
+</body>
+</html>

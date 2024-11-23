@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        #order-list {
+            list-style-type: none;
+            padding: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #order-list li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #order-list li strong {
+            color: #2980b9;
+        }
+
+        button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Orders</h1>
+    <h2>Current Orders:</h2>
+    <ul id="order-list">
+        {% for order in orders %}
+            <li>
+                <strong>Username:</strong> {{ order.username }}, 
+                <strong>Table No:</strong> {{ order.table_number }}, 
+                <strong>Items:</strong> {{ order.items | join(', ') }}
+            </li>
+        {% endfor %}
+    </ul>
+    <button onclick="location.href='{{ url_for('kitchen_page') }}'">Go to Kitchen</button>
+
+    <footer>
+        &copy; 2024 <strong>R</strong>esto Management And <strong>SKYNET</strong>. All rights reserved.
+    </footer>
+</body>
+</html>

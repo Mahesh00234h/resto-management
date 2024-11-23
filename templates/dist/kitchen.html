@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Orders</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #89949f;
+        }
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+        .orders-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        button.complete-order-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button.complete-order-btn:hover {
+            background-color: #218838;
+        }
+        tr.completed {
+            background-color: #d4edda !important;
+            text-decoration: line-through;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 20px;
+
+            
+        }
+
+        footer strong {
+            color: #e74c3c;
+        }
+    </style>
+    <script>
+        const socket = io();
+
+        
+        socket.on('new_order', (order) => {
+            const ordersTable = document.getElementById('orders-table-body');
+            const orderRow = document.createElement('tr');
+            orderRow.innerHTML = `
+                <td>${order.username}</td>
+                <td>${order.table_number}</td>
+                <td>${order.items.join(", ")}</td>
+                <td><button class="complete-order-btn" onclick="completeOrder(this, '${order.order_id}')">✔</button></td>`;
+            ordersTable.appendChild(orderRow); 
+        });
+
+        function completeOrder(button, orderId) {
+            
+            const row = button.closest('tr');
+            row.classList.add('completed');
+            row.querySelector('.complete-order-btn').disabled = true;
+
+            
+            socket.emit('complete_order', orderId);
+        }
+    </script>
+</head>
+<body>
+    <h1>Kitchen Orders</h1>
+    
+    <div class="orders-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Table Number</th>
+                    <th>Items</th>
+                    <th>Complete</th>
+                </tr>
+            </thead>
+            <tbody id="orders-table-body">
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.username }}</td>
+                    <td>{{ order.table_number }}</td>
+                    <td>{{ order.items | join(", ") }}</td>
+                    <td><button class="complete-order-btn" onclick="completeOrder(this, '{{ order.order_id }}')">✔</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/admin">Go to Admin Page</a>
+    </div>
+    <footer>
+        &copy; 2024 <strong>R</strong>esto Management And <strong>SKYNET</strong>. All rights reserved.
+    </footer>
+</body>
+</html>
