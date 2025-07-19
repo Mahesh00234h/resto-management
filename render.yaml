@@ -1,7 +1,5 @@
-services:
-  - type: web
-    name: resto-management
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app --worker-class eventlet -w 1"
-    pythonVersion: 3.11
+Flask
+Flask-SocketIO
+eventlet>=0.33.0
+gunicorn
+setuptools
