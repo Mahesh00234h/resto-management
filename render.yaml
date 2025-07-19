@@ -1,5 +1,6 @@
-Flask
-Flask-SocketIO
-eventlet>=0.33.0
-gunicorn
-setuptools
+services:
+  - type: web
+    name: flask-socketio-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --worker-class eventlet -w 1
