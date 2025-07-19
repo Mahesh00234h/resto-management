@@ -1,29 +1,10 @@
 services:
   - type: web
-    name: og-techminds-backend
+    name: resto-management
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --worker-class eventlet -w 1"
     envVars:
-      - key: MONGO_URI
-        fromEnvVar: MONGO_URI
-      - key: MAIL_SERVER
-        fromEnvVar: MAIL_SERVER
-      - key: MAIL_PORT
-        fromEnvVar: MAIL_PORT
-      - key: MAIL_USERNAME
-        fromEnvVar: MAIL_USERNAME
-      - key: MAIL_PASSWORD
-        fromEnvVar: MAIL_PASSWORD
-      - key: MAIL_USE_TLS
-        fromEnvVar: MAIL_USE_TLS
-      - key: SECRET_KEY
-        fromEnvVar: SECRET_KEY
-      - key: CLOUDINARY_CLOUD_NAME
-        fromEnvVar: CLOUDINARY_CLOUD_NAME
-      - key: CLOUDINARY_API_KEY
-        fromEnvVar: CLOUDINARY_API_KEY
-      - key: CLOUDINARY_API_SECRET
-        fromEnvVar: CLOUDINARY_API_SECRET
-      - key: ADMIN_SECRET_KEY
-        fromEnvVar: ADMIN_SECRET_KEY
+      - key: FLASK_ENV
+        value: production
+
