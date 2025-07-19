@@ -6,6 +6,7 @@ app.config['SECRET_KEY'] = 'secret!'
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = 'filesystem'
 socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*") 
 
 
 menu = {
